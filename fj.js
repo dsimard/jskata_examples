@@ -4,9 +4,7 @@ function load() {
 		{ method : "flickr.photos.search",
 			api_key : "4ef2fe2affcdd6e13218f5ddd0e2500d",
 			format : "json",
-			tags : "landscape",
-			sort : "relevance",
-			per_page: 50
+			tags : "landscape"
 		},
 		ajaxCallBack
 	);
