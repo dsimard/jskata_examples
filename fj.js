@@ -14,14 +14,25 @@ function load() {
 
 function ajaxCallBack(data) {
 	// Loop throught all photos and display them
-	// it uses the jquery.each method ( http://docs.jquery.com/Utilities/jQuery.each )
+	// it uses the jquery.each method 
+	// doc at http://docs.jquery.com/Utilities/jQuery.each
 	$.each(data.photos.photo, function(photoIdx, photo) {
-		console.log(photo);
-		var url = ["http://farm", photo.farm, ".static.flickr.com/", 
+		// Build the thumbnail url
+		var thumb_url = ["http://farm", photo.farm, ".static.flickr.com/", 
 			photo.server, "/", photo.id, "_", photo.secret, "_t.jpg"].join("");
+		
+		// Build the photo url
+		var photo_url = ["http://www.flickr.com/photos/", 
+			photo.owner, "/", photo.id].join("")
 
+		// Build HTML
 		$("body").append(
-			$("<img>").attr("src", url)
+			$("<a>")
+				.attr("href", photo_url)
+				.attr("target", "_blank")
+				.append(
+					$("<img>").attr("src", thumb_url)
+				)
 		)
 	});
 }
