@@ -1,0 +1,24 @@
+body {
+	font-family:verdana,sans-serif,arial;
+	margin:0;
+}
+
+h1 {
+	background-color:#000;
+	margin:0;
+	padding:0.5em;
+}
+
+	h1 a {
+		color:#fff;
+	}
+
+a:visited {
+	color:blue;
+}
+
+div#content {
+	margin:1em;
+}
+
+
