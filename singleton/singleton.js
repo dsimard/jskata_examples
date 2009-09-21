@@ -1,3 +1,4 @@
+
 function Cats() {
 	var names = [];
 
@@ -25,25 +26,14 @@ function load() {
 	// Add a new cat
 	var cat1 = new Cats();
 	cat1.add("Mistigri");
-	
-	test("Add Mistigri as a cat1", function() {
-		equals(cat1.names().length, 1, "There's one cat");
-		equals(cat1.names()[0], "Mistigri", "Mistigri is added as a cat");
-	});
-	
+	console.log("cat1 contains 1 cat", cat1.names());
+
 	// Use another instance
 	var cat2 = new Cats();
-	
-	test("Mistigri is available in cat2", function() {
-		equals(cat2.names().length, 1, "There's one cat");
-		equals(cat2.names()[0], "Mistigri", "Mistigri is available in cat2");
-	});
+	console.log("cat2 contains Mistigri added in cat1", cat2.names());
 	
 	// Add another cat in the other instance
 	cat2.add("Felix");
-	
-	test("There's 2 cats in cat2", function() {
-		equals(cat2.names().length, 2, "There's one cat");
-		equals(cat2.names()[1], "Felix", "The new cat is Felix");
-	});
+	console.log("cat2 contains Mistigri and Felix", cat2.names());
+	console.log("cat1 also contains Mistigri and Felix", cat1.names());
 }
