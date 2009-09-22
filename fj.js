@@ -1,16 +1,38 @@
 function load() {
+	var filter = function(data, type) {
+		console.log("filter", data, type);
+		return {test:true}
+	}
+	
+	var data = {
+		method : "flickr.photos.search",
+		api_key : "4ef2fe2affcdd6e13218f5ddd0e2500d",
+		format : "json",
+		tags : "landscape"
+	}
+	
+	$.ajaxSetup({
+		dataFilter:filter
+	});
+
+	/*$.getJSON({
+		url:"http://api.flickr.com/services/rest/?jsoncallback=?",
+		method: "GET",
+		dataType : "jsonp",
+		cache:false,
+		data : ,
+		success : ajaxCallBack
+	});*/
+	
 	$.getJSON(
 		"http://api.flickr.com/services/rest/?jsoncallback=?",
-		{ method : "flickr.photos.search",
-			api_key : "4ef2fe2affcdd6e13218f5ddd0e2500d",
-			format : "json",
-			tags : "landscape"
-		},
+		data,
 		ajaxCallBack
 	);
 }
 
 function ajaxCallBack(data) {
+console.log("Data");
 	// Loop throught all photos and display them
 	// it uses the jquery.each method 
 	// doc at http://docs.jquery.com/Utilities/jQuery.each
