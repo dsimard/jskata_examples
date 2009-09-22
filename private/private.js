@@ -3,17 +3,22 @@ function load() {
 	var pubCats = new PublicCats();
 	var privCats = new PrivateCats();
 	
-	// Adding a cat is the same
-	console.log(pubCats.add("Mistigri"), "added in public cats");
-	console.log(pubCats.add("Felix"), "added in public cats");
-	console.log(privCats.add("Mimi"), "added in private cats");
-	console.log(privCats.add("Duchess"), "added in private cats");
+	var log = function log(msg) {
+		if (typeof msg == "object" && msg.length) msg = msg.join("");
+		$("body").append($("<div>").html(msg));
+	}
 	
+	// Adding a cat is the same
+	jsKataEx.title("Add cats");
+	jsKataEx.assertNotNull(pubCats.add("Mistigri"), "is added");
+	jsKataEx.assertNotNull(pubCats.add("Felix"), "is added");
+	jsKataEx.assertNotNull(pubCats.add("Mimi"), "is added");
+	jsKataEx.assertNotNull(pubCats.add("Duchess"), "is added");
+
 	// Check scopes
-	console.log(pubCats.names(), "are the cats in public cats");
-	console.log(privCats.names(), "are the cats in private cats");
-	console.log(pubCats.nameList, " : I CAN access the private nameList variable from public cats");
-	console.log(privCats.nameList, " : I CANNOT access the nameList variable from private cats");
+	jsKataEx.title("Check the scopes");
+	jsKataEx.assertNotNull(pubCats.nameList, ": I CAN access the private nameList variable from public cats");
+	jsKataEx.assertNotNull(privCats.nameList, "I CANNOT access the nameList variable from private cats");
 }
 
 // This class uses public variables
