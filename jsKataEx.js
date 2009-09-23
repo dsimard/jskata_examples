@@ -1,4 +1,6 @@
 jsKataEx = (function() {
+	var container = null;
+
 	function argumentsToArray(args) {
 		var a = [];
 		for (var i = 0; i < args.length; i++) {
@@ -8,7 +10,7 @@ jsKataEx = (function() {
 	}
 	
 	function writeLine(args, element) {
-		$("body").append(
+		jsKataEx.container().append(
 			$("<"+element+">").html(
 				argumentsToArray(args).join("")
 			)
@@ -16,6 +18,11 @@ jsKataEx = (function() {
 	}
 	
 	return {
+		container:function(element) {
+			if (element) container = element;
+			if (container == null) container = $("body");
+			return container;
+		},
 		title:function() {
 			writeLine(arguments, "h3");
 		},
@@ -37,8 +44,8 @@ jsKataEx = (function() {
 			div.append(ok);
 			div.append($("<strong>").text(" " + (v ? v.toString() : "null")));
 			div.append($("<span>").text(" " + msg));
-			
-			$("body").append(div);
+
+			this.container().append(div);
 		}
 	}
 })();

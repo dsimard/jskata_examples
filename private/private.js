@@ -1,5 +1,7 @@
 // When the page is loaded
 function load() {
+	jsKataEx.container($("#content"));
+
 	var pubCats = new PublicCats();
 	var privCats = new PrivateCats();
 	
