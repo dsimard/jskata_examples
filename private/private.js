@@ -12,8 +12,8 @@ function load() {
 	jsKataEx.title("Add cats");
 	jsKataEx.assertNotNull(pubCats.add("Mistigri"), "is added");
 	jsKataEx.assertNotNull(pubCats.add("Felix"), "is added");
-	jsKataEx.assertNotNull(pubCats.add("Mimi"), "is added");
-	jsKataEx.assertNotNull(pubCats.add("Duchess"), "is added");
+	jsKataEx.assertNotNull(privCats.add("Mimi"), "is added");
+	jsKataEx.assertNotNull(privCats.add("Duchess"), "is added");
 
 	// Check scopes
 	jsKataEx.title("Check the scopes");
