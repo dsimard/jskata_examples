@@ -17,8 +17,16 @@ a:visited {
 	color:blue;
 }
 
-div#content {
+#content {
 	margin:1em;
 }
 
+#execution {
+	background-color:#ddd;	
+	border:solid 1px #000;
+	padding:1em;
+}
 
+	#execution h3 {
+		margin:1em 0 0 0;
+	}
