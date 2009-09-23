@@ -43,7 +43,7 @@ jsKataEx = (function() {
 				
 			div.append(ok);
 			div.append($("<strong>").text(" " + (v ? v.toString() : "null")));
-			div.append($("<span>").text(" " + msg));
+			div.append($("<span>").html(" " + msg));
 
 			this.container().append(div);
 		}
