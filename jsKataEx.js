@@ -17,6 +17,12 @@ jsKataEx = (function() {
 		);
 	}
 	
+	function failOrPass(trueOrFalse) {
+		return $("<span>")
+			.text(trueOrFalse ? "fail" : "pass")
+			.css("color", trueOrFalse ? "red" : "green");
+	}
+	
 	return {
 		container:function(element) {
 			if (element) container = element;
@@ -36,16 +42,34 @@ jsKataEx = (function() {
 		},
 		assertEqual:function(v, e, msg) {
 			if (!msg) msg = [" and ", e, "are equal"].join(" ");
+
 			var div = $("<div>");
-			var ok = $("<span>")
-				.text(v == null ? "fail" : "pass")
-				.css("color", v == null ? "red" : "green");
-				
-			div.append(ok);
 			div.append($("<strong>").text(" " + (v ? v.toString() : "null")));
+			div.append($("<span>").text(" equals "));
+			div.append($("<strong>").text(" " + (e ? e.toString() : "null")));
 			div.append($("<span>").html(" " + msg));
 
+			this.assert(v == e, div.html());
+		},
+		assert:function(trueOrFalse, msg) {
+			if (!msg) msg = " is true";
+			var div = $("<div>");
+				
+			div.append(failOrPass(trueOrFalse));
+			div.append($("<span>").html(msg));
+
 			this.container().append(div);
+		},
+		assertNot:function(trueOrFalse, msg) {
+			if (!msg) msg = " is false";
+			
+			var div = $("<div>");
+				
+			div.append(failOrPass(trueOrFalse));
+			div.append($("<span>").text(msg));
+
+			this.container().append(div);
+
 		}
 	}
 })();
