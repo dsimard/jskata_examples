@@ -13,6 +13,7 @@ function Cats() {
 	
 	// Create an instance of the Cats class
 	var createInstance = function() {
+		// Here, you return all public methods and variables
 		return {
 			add : function(name) {
 				names.push(name);
