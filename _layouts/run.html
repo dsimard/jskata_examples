@@ -13,11 +13,21 @@
 		<script src="http://github.com/dsimard/jskata_examples/raw/master/jsKataEx.js"></script>
 </head>
 <body>
-	<h1><a href="../">Javascript Kata on GitHub</a></h1>
+	<h1><a href="http://dsimard.github.com/jskata_examples/">Javascript Kata on GitHub</a></h1>
 	<div id="content">
-		<h2>{{ page.title }}</h2>
+		<h2>
+			{{ page.title }}
+			<a href="{{page.jsKataUrl}}" target="_blank">&raquo;</a>
+		</h2>
+		<p>
+			Have a look at the code 
+			<a href="{{page.codeUrl}}">here</a>.
+		</p>
+		<button id="run">run &gt;&gt;</button>
+		<div id="execution">
+			<h2>Execution plan</h2>
+		</div>
 		{{ content }} 
 	</div>
-	<script>jsKataEx.container($("#content"))</script>
 </body>
 </html>

@@ -9,7 +9,7 @@ h1 {
 	padding:0.5em;
 }
 
-	h1 a {
+	h1 a, h1 a:visited {
 		color:#fff;
 	}
 
@@ -24,6 +24,7 @@ a:visited {
 #execution {
 	background-color:#ddd;	
 	border:solid 1px #000;
+	margin:0.5em 0;
 	padding:1em;
 }
 
