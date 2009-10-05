@@ -21,13 +21,13 @@ a:visited {
 	margin:1em;
 }
 
-#execution {
+#results {
 	background-color:#ddd;	
 	border:solid 1px #000;
 	margin:0.5em 0;
 	padding:1em;
 }
 
-	#execution h3 {
+	#results h3 {
 		margin:1em 0 0 0;
 	}

@@ -9,24 +9,11 @@
    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 		<!-- Load jquery -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<!-- Load jsKataEx -->
-		<script src="http://github.com/dsimard/jskata_examples/raw/master/jsKataEx.js"></script>
 </head>
 <body>
 	<h1><a href="http://dsimard.github.com/jskata_examples/">Javascript Kata on GitHub</a></h1>
 	<div id="content">
-		<h2>
-			{{ page.title }}
-			<a href="{{page.jsKataUrl}}" target="_blank">&raquo;</a>
-		</h2>
-		<p>
-			Have a look at the code 
-			<a href="{{page.codeUrl}}">here</a>.
-		</p>
-		<button id="run">run &gt;&gt;</button>
-		<div id="results">
-			<h2>Execution plan</h2>
-		</div>
+		<h2>{{ page.title }}</h2>
 		{{ content }} 
 	</div>
 </body>
