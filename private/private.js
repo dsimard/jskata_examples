@@ -11,16 +11,16 @@ function load() {
 	}
 	
 	// Adding a cat is the same
-	jsKataEx.title("Add cats");
-	jsKataEx.assertNotNull(pubCats.add("Mistigri"), "is added to <em>public</em> cat");
-	jsKataEx.assertNotNull(pubCats.add("Felix"), "is added to <em>public</em> cat");
-	jsKataEx.assertNotNull(privCats.add("Mimi"), "is added to <em>private</em> cat");
-	jsKataEx.assertNotNull(privCats.add("Duchess"), "is added to <em>private</em> cat");
+	pubCats.add("Mistigri");
+	pubCats.add("Felix");
+	privCats.add("Mimi");
+	privCats.add("Duchess");
+	jsKataEx.assert(pubCats.names().length == 2, "pubCats has 2 cats");
+	jsKataEx.assert(privCats.names().length == 2, "privCats has 2 cats");
 
 	// Check scopes
-	jsKataEx.title("Check the scopes");
-	jsKataEx.assertNotNull(pubCats.nameList, " : I CAN access the private nameList variable from public cats");
-	jsKataEx.assertNotNull(privCats.nameList, " : I CANNOT access the nameList variable from private cats");
+	jsKataEx.assert(pubCats.nameList, " : I CAN access the private nameList variable from public cats");
+	jsKataEx.assert(privCats.nameList, " : I CANNOT access the nameList variable from private cats");
 }
 
 // This class uses public variables

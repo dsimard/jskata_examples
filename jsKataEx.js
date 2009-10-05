@@ -19,57 +19,47 @@ jsKataEx = (function() {
 	
 	function failOrPass(trueOrFalse) {
 		return $("<span>")
-			.text(trueOrFalse ? "fail" : "pass")
-			.css("color", trueOrFalse ? "red" : "green");
+			.text(trueOrFalse ? "pass" : "fail")
+			.css({
+				color:(trueOrFalse ? "green" : "red"),
+				fontWeight:"bold"
+			});
 	}
 	
 	return {
+		// Get or set the container
 		container:function(element) {
 			if (element) container = element;
-			if (container == null) container = $("body");
+			if (container == null) container = $("#results"); // Try #results
+			if (container.length == 0) container = $("body"); // Use body instead
 			return container;
 		},
+		// Show a title
 		title:function() {
 			writeLine(arguments, "h3");
 		},
+		// Log a line
 		log:function log() {
 			writeLine(arguments, "div");
 		},
-		assertNotNull:function assertNotNull(v, msg) {
-			if (!msg) msg = "is not null";
-			if (v === undefined) v = null;
-			this.assertEqual(v, null, msg);
+		// Assert
+		assert:function(pass, msg) {
+			this.container()
+				.append($("<div>")
+					.append(failOrPass(pass))
+					.append($("<span>").text(" " + msg))
+				);
 		},
-		assertEqual:function(v, e, msg) {
-			if (!msg) msg = [" and ", e, "are equal"].join(" ");
-
-			var div = $("<div>");
-			div.append($("<strong>").text(" " + (v ? v.toString() : "null")));
-			div.append($("<span>").text(" equals "));
-			div.append($("<strong>").text(" " + (e ? e.toString() : "null")));
-			div.append($("<span>").html(" " + msg));
-
-			this.assert(v == e, div.html());
-		},
-		assert:function(trueOrFalse, msg) {
-			if (!msg) msg = " is true";
-			var div = $("<div>");
-				
-			div.append(failOrPass(trueOrFalse));
-			div.append($("<span>").html(msg));
-
-			this.container().append(div);
-		},
-		assertNot:function(trueOrFalse, msg) {
-			if (!msg) msg = " is false";
-			
-			var div = $("<div>");
-				
-			div.append(failOrPass(trueOrFalse));
-			div.append($("<span>").text(msg));
-
-			this.container().append(div);
-
-		}
 	}
 })();
+
+// If there's a button run, run on click
+$(document).ready(function() {
+	var runFunction = window.run ? window.run : window.load;
+	if ($("#run").length > 0) {
+		$("#run").click(runFunction);
+	} else {
+		// Run on load
+		$(document).ready(runFunction);	
+	}
+});
