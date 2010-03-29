@@ -1,0 +1,70 @@
+---
+layout: default
+title: 
+---
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="http://github.com/dsimard/jskataUndo/raw/master/jskataUndo.js"></script>
+<style>
+#undo {
+	display:none;
+}
+</style>
+<script>
+$(document).ready(function() {
+	// Show a log of action
+	var logAction = function(msg) {
+		$("#actions").append(
+			$("<li>").html(msg)
+		);
+	}
+
+	// Show the undo button when there's a new undo
+	jskataUndo.onChange = function() {
+		$("#undo").fadeIn();
+	};
+	
+	// When the undo is empty
+	jskataUndo.onEmpty = function() {
+		logAction("<span style='color:#666'>nothing left to undo</span>")
+		$("#undo").fadeOut();
+	};
+	
+	// Undo is clicked
+	$("#undo").click(function() {
+		jskataUndo.undo();
+	});
+	
+	// Add user
+	$("#addUser").click(function() {
+		var user = $("#user").val();
+		if (!user) user = "[empty]";
+		logAction("Added user <strong>" + user + "</strong>")
+		var undoAddUser = function() {
+			logAction("<span style='color:red'>[undo]</span>" + 
+				"Removed user <strong>" + user + "<strong>");
+		}
+		jskataUndo.push(undoAddUser);
+	});
+	
+	// Add project
+	$("#addProject").click(function() {
+		var project = $("#project").val();
+		if (project == "") project = "[empty]";
+		logAction("Added project <strong>" + project + "</strong>")
+		var undoAddProject = function() {
+			logAction("<span style='color:red'>[undo]</span>" + 
+				"Removed project <strong>" + project + "</strong>");
+		}
+		jskataUndo.push(undoAddProject);
+	});
+});
+</script>
+<button id="undo">Undo</button>
+<br /><br />
+<input type="text" id="user" /><button id="addUser">add user</button>
+<br />
+<input type="text" id="project" /><button id="addProject">add project</button>
+<br />
+<h3>Actions</h3>
+<ul id="actions" />
+
