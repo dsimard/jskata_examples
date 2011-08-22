@@ -1,15 +1,14 @@
 function Cats() {
 	var names = [];
-	
-	this.singletonInstance = null;
+ 
 
 	// Get the instance of the Cats class
 	// If there's none, instanciate one
 	var getInstance = function() {
-		if (!this.singletonInstance) { 
-			this.singletonInstance = createInstance();
+		if (!Cats.singletonInstance) { 
+			Cats.singletonInstance = createInstance();
 		}
-		return this.singletonInstance;
+		return Cats.singletonInstance;
 	}
 	
 	// Create an instance of the Cats class
