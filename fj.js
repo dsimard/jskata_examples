@@ -14,15 +14,6 @@ function load() {
 	$.ajaxSetup({
 		dataFilter:filter
 	});
-
-	/*$.getJSON({
-		url:"http://api.flickr.com/services/rest/?jsoncallback=?",
-		method: "GET",
-		dataType : "jsonp",
-		cache:false,
-		data : ,
-		success : ajaxCallBack
-	});*/
 	
 	$.getJSON(
 		"http://api.flickr.com/services/rest/?jsoncallback=?",
@@ -32,7 +23,6 @@ function load() {
 }
 
 function ajaxCallBack(data) {
-console.log("Data");
 	// Loop throught all photos and display them
 	// it uses the jquery.each method 
 	// doc at http://docs.jquery.com/Utilities/jQuery.each
